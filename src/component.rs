@@ -240,7 +240,8 @@ mod tests {
                 efi.remove_all("centos")?;
                 assert_eq!(component.get_efi_vendor(tdp)?, Some("fedora".to_string()));
                 {
-                    let td_vendor = "usr/lib/efi/shim/15.8-3/EFI/centos";
+                    // Create structure with generic version (will be discovered dynamically)
+                    let td_vendor = "usr/lib/efi/shim/1.0/EFI/centos";
                     tdir.ensure_dir_all(td_vendor, 0o755)?;
                     let shim_dir = tdir.sub_dir(td_vendor)?;
                     shim_dir.write_file_contents(
